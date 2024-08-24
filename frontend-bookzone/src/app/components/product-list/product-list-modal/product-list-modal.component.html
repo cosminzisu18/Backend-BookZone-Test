@@ -1,0 +1,35 @@
+<div class="modal-header">
+    <h5 class="modal-title">{{ isEditMode ? 'Edit Product' : 'Add Product' }}</h5>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+  </div>
+  
+  <div class="modal-body">
+    <form (ngSubmit)="saveProduct()">
+      <div class="mb-3">
+        <label for="name" class="form-label">Product Name</label>
+        <input 
+          id="name" 
+          type="text" 
+          class="form-control" 
+          [(ngModel)]="product.name" 
+          name="name" 
+          required>
+      </div>
+  
+      <div class="mb-3">
+        <label for="price" class="form-label">Price</label>
+        <input 
+          id="price" 
+          type="number" 
+          class="form-control" 
+          [(ngModel)]="product.price" 
+          name="price" 
+          required>
+      </div>
+  
+      <button type="submit" class="btn btn-primary" [disabled]="!product.name || !product.price">
+        {{ isEditMode ? 'Update Product' : 'Add Product' }}
+      </button>
+    </form>
+  </div>
+  

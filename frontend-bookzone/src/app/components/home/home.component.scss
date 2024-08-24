@@ -1,0 +1,48 @@
+.header {
+    width: 100%;
+    height: 300px;
+    background: linear-gradient(135deg, #D16BA5, #86A8E7, #5FFBF1); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white; 
+    text-align: center;
+    box-sizing: border-box;
+    
+    h1 {
+      font-size: 2.5rem;
+      margin: 0;
+      padding: 0 20px;
+    }
+  }
+  
+  .container {
+    text-align: center;
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 1200px;
+    
+    p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+    
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 20px 0;
+      font-size: 1.1rem;
+      text-align: left;
+      display: inline-block;
+      
+      li {
+        margin: 10px 0;
+        
+        strong {
+          color: #D16BA5; // Accent color for emphasis
+        }
+      }
+    }
+    
+  }
+  

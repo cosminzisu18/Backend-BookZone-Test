@@ -1,0 +1,55 @@
+<div class="table-container mt-5">
+  <div class="table-header">
+    <div class="d-flex justify-content-end mb-3 period-buttons">
+      <button class="btn btn-period">Last Day</button>
+      <button class="btn btn-period">Last Week</button>
+      <button class="btn btn-period active">Last 30 Days</button>
+      <button class="btn btn-period">Last Year</button>
+      <button class="btn btn-period">All Time</button>
+    </div>
+    <h3>Top Selling Products</h3>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr class="text-center">
+          <th>#</th> <!-- Coloana pentru index -->
+          <th class="text-center">Product Name</th>
+          <th class="text-center">Units Sold</th>
+          <th class="text-center">Total Sales Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="paginatedProducts.length === 0">
+          <td colspan="4" class="text-center">No top selling products available.</td>
+        </tr>
+        <tr *ngFor="let product of paginatedProducts; let i = index" class="text-center">
+          <td>{{ i + 1 }}</td> <!-- Index pentru fiecare produs -->
+          <td>{{ product.productName }}</td>
+          <td>{{ product.unitsSold }}</td>
+          <td>{{ product.totalSalesValue | currency }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <nav aria-label="Page navigation" class="pagination-container text-left">
+    <ul class="pagination">
+      <li class="page-item" [ngClass]="{ 'disabled': currentPage === 1 }">
+        <a class="page-link" (click)="previousPage()" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <li *ngFor="let page of pages" 
+          [ngClass]="{ 'page-item': true, 'active': page === currentPage, 'disabled': page === -1 }">
+        <a class="page-link" (click)="page !== -1 ? goToPage(page) : null">{{ page === -1 ? '...' : page }}</a>
+      </li>
+      <li class="page-item" [ngClass]="{ 'disabled': currentPage === totalPages }">
+        <a class="page-link" (click)="nextPage()" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>

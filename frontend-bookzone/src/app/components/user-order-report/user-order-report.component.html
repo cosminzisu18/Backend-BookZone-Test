@@ -1,0 +1,53 @@
+<div class="table-container">
+    <div class="d-flex justify-content-center mb-3 mt-5 table-header">
+      <h3>User Order Report</h3>
+    </div>
+    <div class="d-flex justify-content-center mb-3 table-subheader">
+      <h5>Users who have placed orders totaling over 1000 RON in the last 6 months</h5>
+    </div>
+  
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th class="text-center id-column">ID</th>
+            <th class="text-center name-column">
+              Name
+              <div class="search-wrapper">
+                <input type="text" [(ngModel)]="searchQuery" (ngModelChange)="onSearch()" class="form-control form-control-sm short-search-input" placeholder="Search by Name">
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="paginatedUsers.length === 0">
+            <td colspan="2" class="text-center">No users data available.</td>
+          </tr>
+          <tr *ngFor="let user of paginatedUsers">
+            <td class="text-center">{{ user.id }}</td>
+            <td class="text-center">{{ user.name }}</td>
+          </tr>
+        </tbody>
+      </table>
+  
+      <nav aria-label="Page navigation" class="pagination-container">
+        <ul class="pagination">
+          <li class="page-item" [ngClass]="{ 'disabled': currentPage === 1 }">
+            <a class="page-link" (click)="previousPage()" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li *ngFor="let page of pages" 
+              [ngClass]="{ 'page-item': true, 'active': page === currentPage, 'disabled': page === -1 }">
+            <a class="page-link" (click)="page !== -1 ? goToPage(page) : null">{{ page === -1 ? '...' : page }}</a>
+          </li>
+          <li class="page-item" [ngClass]="{ 'disabled': currentPage === totalPages }">
+            <a class="page-link" (click)="nextPage()" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  

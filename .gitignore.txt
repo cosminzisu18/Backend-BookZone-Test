@@ -1,0 +1,12 @@
+# Directoare și fișiere generate de Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Node modules
+frontend-bookzone/node_modules/
+
+# Fișiere de log
+*.log
